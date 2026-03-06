@@ -8,9 +8,9 @@ const Carousel = (() => {
     const track = document.querySelector(trackSel);
     if (!track) return;
 
-    const wrap  = track.parentElement;
+    const wrap = track.parentElement;
     let current = 0;
-    let timer   = null;
+    let timer = null;
 
     function count() {
       return track.children.length;
@@ -57,13 +57,22 @@ const Carousel = (() => {
     function updateDots() {
       const container = document.querySelector(dotsSel);
       if (!container) return;
+
+      const max = maxIndex();
+      if (max <= 0) {
+        container.style.display = 'none';
+        return;
+      } else {
+        container.style.display = '';
+      }
+
       container.querySelectorAll('.carousel-dot').forEach((d, i) => {
         d.classList.toggle('active', i === current);
       });
     }
 
-    function next() { goTo(current + 1 > maxIndex() ? 0 : current + 1); }
-    function prev() { goTo(current - 1 < 0 ? maxIndex() : current - 1); }
+    function next() { if (maxIndex() > 0) goTo(current + 1 > maxIndex() ? 0 : current + 1); }
+    function prev() { if (maxIndex() > 0) goTo(current - 1 < 0 ? maxIndex() : current - 1); }
 
     function startAutoplay() {
       if (!autoplay) return;
@@ -100,20 +109,38 @@ const Carousel = (() => {
       isDragging = false;
     }, { passive: true });
 
+    // Controls visibility
+    function toggleControls() {
+      const max = maxIndex();
+      const wrapDisplay = max <= 0 ? 'none' : '';
+
+      if (prevBtn) prevBtn.style.display = wrapDisplay;
+      if (nextBtn) nextBtn.style.display = wrapDisplay;
+
+      if (max <= 0 && timer) {
+        clearInterval(timer);
+        timer = null;
+      }
+    }
+
+    // Init
+    buildDots();
+    toggleControls();
+    goTo(0);
+    if (maxIndex() > 0) {
+      startAutoplay();
+    }
+
     // Rebuild on resize
     let resizeTimer;
     window.addEventListener('resize', () => {
       clearTimeout(resizeTimer);
       resizeTimer = setTimeout(() => {
+        toggleControls();
         goTo(Math.min(current, maxIndex()));
         buildDots();
       }, 200);
     });
-
-    // Init
-    buildDots();
-    goTo(0);
-    startAutoplay();
 
     return { goTo, next, prev };
   }
@@ -121,17 +148,17 @@ const Carousel = (() => {
   function init() {
     create({
       trackSel: '[data-catalog-track]',
-      prevSel:  '[data-catalog-prev]',
-      nextSel:  '[data-catalog-next]',
-      dotsSel:  '[data-catalog-dots]',
+      prevSel: '[data-catalog-prev]',
+      nextSel: '[data-catalog-next]',
+      dotsSel: '[data-catalog-dots]',
       autoplay: 5000,
     });
 
     create({
       trackSel: '[data-testimonials-track]',
-      prevSel:  '[data-testimonials-prev]',
-      nextSel:  '[data-testimonials-next]',
-      dotsSel:  '[data-testimonials-dots]',
+      prevSel: '[data-testimonials-prev]',
+      nextSel: '[data-testimonials-next]',
+      dotsSel: '[data-testimonials-dots]',
       autoplay: 6000,
     });
   }
