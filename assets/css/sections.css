@@ -494,14 +494,11 @@
 }
 
 .stats-section .partner-pill {
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(255, 255, 255, 0.12);
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.78);
 }
 
 .stats-section .partner-pill:hover {
-  border-color: var(--color-accent);
-  color: var(--color-accent);
+  color: var(--color-white);
 }
 
 /* ════════════════════════════════════════

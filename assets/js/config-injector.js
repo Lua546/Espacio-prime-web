@@ -122,9 +122,8 @@ const ConfigInjector = (() => {
     const container = $('[data-partners-row]');
     if (!container || !cfg.partners?.length) return;
 
-    const html = cfg.partners.map(({ name, logo }) => `
+    const html = cfg.partners.map(({ name }) => `
       <div class="partner-pill">
-        ${logo ? `<img src="${logo}" alt="${name}" style="height:20px;width:auto;">` : ''}
         <span>${name}</span>
       </div>
     `).join('');
