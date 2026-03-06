@@ -20,7 +20,8 @@
 ```
 Inmobiliaria/
 │
-├── index.html                 ← Estructura HTML (no modificar salvo nuevas secciones)
+├── index.html                 ← Estructura HTML (Landing page principal)
+├── servicios.html             ← Página de Catálogo filtrable
 │
 ├── config/
 │   └── site-config.js        ← ⭐ ÚNICO ARCHIVO A MODIFICAR POR CLIENTE
@@ -39,8 +40,9 @@ Inmobiliaria/
 │   │   ├── navbar.js          ← Smart navbar con scroll y menú mobile
 │   │   ├── carousel.js        ← Carrusel (catálogo + testimonios)
 │   │   ├── scroll-reveal.js   ← Animaciones al hacer scroll
-│   │   ├── counter.js         ← Contadores animados
+│   │   ├── contador.js        ← Contadores animados
 │   │   ├── faq.js             ← Acordeón FAQ (para páginas futuras)
+│   │   ├── servicios.js       ← Lógica de búsqueda y filtrado en tiempo real
 │   │   └── whatsapp.js        ← Botón flotante de WhatsApp
 │   │
 │   └── img/
@@ -67,7 +69,8 @@ El archivo está completamente documentado con comentarios. Permite configurar:
 | `stats` | Números y etiquetas de estadísticas |
 | `partners` | Nombres y logos de empresas aliadas |
 | `about` | Texto "Nosotros" e imagen |
-| `catalog` | Título, descripción y cards de propiedades |
+| `catalog` | Título, descripción y cards de propiedades destacadas |
+| `servicesCatalog` | El inventario completo para la ruta /servicios.html |
 | `process` | Pasos del proceso de trabajo |
 | `testimonials` | Testimonios de clientes |
 | `contactSection` | Textos y endpoint del formulario |
@@ -77,11 +80,11 @@ El archivo está completamente documentado con comentarios. Permite configurar:
 
 ## 📄 Agregar nuevas páginas
 
-El proyecto está preparado para escalar. Para agregar, por ejemplo, una página "Nosotros":
+El proyecto está preparado para escalar. Para agregar nuevas páginas:
 
-1. Crear `nosotros.html` con la misma cabecera/footer que `index.html`.
-2. Incluir los mismos scripts en el mismo orden.
-3. Usar los mismos componentes CSS.
+1. Usar la estructura base de cabecera/footer vista en `index.html` o `servicios.html`.
+2. Incluir los mismos scripts globales (`lenis`, `config-injector`, `navbar`).
+3. Usar los mismos componentes CSS definidos en el UI Kit.
 4. Agregar el link en `site-config.js → nav`.
 
 ---
@@ -90,8 +93,9 @@ El proyecto está preparado para escalar. Para agregar, por ejemplo, una página
 
 - HTML5 semántico
 - CSS3 con Custom Properties
-- JavaScript vanilla (ES2020+, sin dependencias)
-- Google Fonts: Playfair Display + DM Sans
+- JavaScript vanilla (ES2020+, sin dependencias pesadas)
+- Animaciones de Scroll fluido vía **Lenis**
+- Google Fonts: Playfair Display + Lato
 - Imágenes: Unsplash (reemplazables)
 
 ---
