@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Conoce más sobre Espacio Prime, nuestra historia, equipo y experiencia en el sector inmobiliario comercial.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_PY">
+
+    <title>Sobre Nosotros — Espacio Prime</title>
+
+    <!-- Styles -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap">
+    <link rel="stylesheet" href="assets/css/variables.css">
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="assets/css/sections.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        .mission-section {
+            background: var(--color-surface);
+            padding: var(--space-16) 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .mission-section::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: var(--font-display);
+            font-size: 160px;
+            color: rgba(0, 0, 0, 0.03);
+            line-height: 1;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .mission-text {
+            font-family: var(--font-display);
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            color: var(--color-text);
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: var(--leading-tight);
+            font-style: normal;
+            font-weight: 600;
+            position: relative;
+            z-index: 2;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-8);
+            margin-top: var(--space-12);
+        }
+
+        .team-card {
+            text-align: center;
+        }
+
+        .team-card__image-wrap {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 0 auto var(--space-6);
+            overflow: hidden;
+            border: 4px solid var(--color-surface);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .team-card__image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform var(--duration-normal) var(--ease-out);
+        }
+
+        .team-card:hover .team-card__image {
+            transform: scale(1.05);
+        }
+
+        .team-card__name {
+            font-family: var(--font-heading);
+            font-size: var(--text-lg);
+            font-weight: var(--weight-bold);
+            margin-bottom: var(--space-1);
+        }
+
+        .team-card__role {
+            color: var(--color-primary);
+            font-weight: var(--weight-medium);
+            font-size: var(--text-sm);
+            margin-bottom: var(--space-3);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .team-card__desc {
+            color: var(--color-text);
+            font-size: 0.9375rem;
+            /* ~15px, up from ~14px */
+            line-height: var(--leading-normal);
+            margin-bottom: var(--space-4);
+        }
+
+        .team-card__contact {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-3);
+            margin-top: var(--space-2);
+        }
+
+        .team-card__contact a {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: var(--text-sm);
+            color: var(--color-primary);
+            text-decoration: none;
+            transition: opacity var(--duration-fast) ease;
+        }
+
+        .team-card__contact a:hover {
+            opacity: 0.75;
+        }
+
+        /* Fix WhatsApp FAB to always stick to viewport corner */
+        .fab-whatsapp {
+            position: fixed !important;
+            bottom: 20px !important;
+            right: 20px !important;
+            z-index: 9999 !important;
+        }
+
+        .timeline-section {
+            background: var(--color-bg-alt);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <header class="navbar" role="banner">
+        <div class="container">
+            <nav class="navbar__inner" aria-label="Navegación principal">
+                <!-- Logo -->
+                <a href="index.html" class="navbar__logo" aria-label="Inicio">
+                    <div class="navbar__logo-mark" data-brand-logo-mark>E</div>
+                    <div class="navbar__logo-text">
+                        <span class="navbar__logo-name" data-brand-name>Espacio Prime</span>
+                        <span class="navbar__logo-tagline" data-brand-tagline>Inmobiliaria Comercial</span>
+                    </div>
+                </a>
+                <!-- Desktop links (populated by JS) -->
+                <div class="navbar__links" data-nav-links aria-label="Menú"></div>
+                <!-- Desktop CTA -->
+                <a href="index.html#contacto" class="btn btn-primary navbar__cta" data-nav-cta>
+                    Consultar
+                </a>
+                <!-- Hamburger -->
+                <button class="navbar__hamburger" aria-label="Abrir menú" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </nav>
+            <!-- Mobile menu (populated by JS) -->
+            <div class="navbar__mobile" data-nav-mobile role="menu"></div>
+        </div>
+    </header>
+
+    <!-- HERO HEADER -->
+    <section class="hero" id="inicio" aria-label="Hero" style="min-height: 55svh;">
+        <div class="hero__bg loaded"
+            style="background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1400&q=80'); background-position: center 30%;">
+        </div>
+        <div class="hero__overlay"></div>
+
+        <div class="container hero__inner" style="padding-bottom: 4rem; padding-top: 140px; text-align: center;">
+            <span class="hero__eyebrow" style="margin-left: auto; margin-right: auto;">
+                <i class="fas fa-building icon-primary"></i> Nuestra Empresa
+            </span>
+            <h1 class="hero__title" style="margin-left: auto; margin-right: auto;">
+                Sobre Espacio Prime
+            </h1>
+            <p class="hero__subtitle" style="margin-left: auto; margin-right: auto;">
+                Conoce la historia, visión y las personas detrás de la inmobiliaria comercial líder en Ciudad del Este.
+            </p>
+        </div>
+    </section>
+
+    <!-- HISTORIA (Adaptado de section about-section) -->
+    <section class="section about-section" style="padding-top: var(--space-20);">
+        <div class="container">
+            <div class="about-grid">
+                <!-- Image -->
+                <div data-reveal="fade-right">
+                    <div class="about__image-wrap">
+                        <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=800&q=80"
+                            alt="Nuestra Historia" class="about__image" loading="lazy">
+                        <div class="about__image-badge">
+                            <strong>13+</strong>
+                            años de experiencia
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Content -->
+                <div class="about__content" data-reveal="fade-left">
+                    <span class="section-eyebrow">Nuestra Historia</span>
+                    <h2>De un pequeño despacho a líderes del Este</h2>
+                    <div class="divider"></div>
+                    <p class="about__body" style="margin-bottom: var(--space-4);">
+                        Fundada en 2013, Espacio Prime comenzó con la visión de profesionalizar y agilizar el mercado de
+                        bienes raíces comerciales en la región de la triple frontera. Con <strong>13 años de
+                            trayectoria</strong> y más de 8 especializados en Ciudad del Este, entendimos que las
+                        empresas
+                        no sólo buscan locales, sino aliados estratégicos para su crecimiento.
+                    </p>
+                    <p class="about__body">
+                        Hoy, más de una década después, nos enorgullece ser la agencia especializada de confianza para
+                        constructoras, firmas internacionales y emprendedores locales que desean establecerse o
+                        expandirse en Ciudad del Este, Área 1, Km 7 y Paraná Country Club.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MISIÓN / VISIÓN -->
+    <section class="mission-section">
+        <div class="container">
+            <div data-reveal="fade-up">
+                <p class="mission-text">
+                    "Nuestra misión es conectar <em>ambiciones empresariales</em> con los espacios físicos perfectos,
+                    garantizando transacciones transparentes, ágiles y altamente rentables para todas las partes."
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ESTADÍSTICAS (Re-uso del componente del landing) -->
+    <section class="stats-section" id="stats" aria-label="Estadísticas">
+        <div class="container">
+            <div class="section-header section-header--center" data-reveal>
+                <span class="section-eyebrow"
+                    style="color:var(--color-accent-light); border-color: rgba(212,175,55,0.4); background:rgba(212,175,55,0.1);">Nuestra
+                    Huella</span>
+                <h2 style="color:var(--color-white)">Resultados que hablan por nosotros</h2>
+                <div class="divider"></div>
+            </div>
+
+            <!-- Stats grid (populated by config-injector) -->
+            <div class="stats-grid" data-stats-grid style="margin-top: var(--space-12);"></div>
+        </div>
+    </section>
+
+    <!-- EQUIPO -->
+    <section class="section" id="equipo">
+        <div class="container">
+            <div class="section-header section-header--center" data-reveal>
+                <span class="section-eyebrow">Quienes somos</span>
+                <h2>Nuestro Equipo Directivo</h2>
+                <div class="divider"></div>
+                <p class="section-subtitle">Profesionales apasionados, listos para asesorarte en tu próxima gran
+                    inversión.</p>
+            </div>
+
+            <div class="team-grid">
+                <!-- Team Member 1 -->
+                <div class="team-card" data-reveal="fade-up" data-delay="1">
+                    <div class="team-card__image-wrap">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80"
+                            alt="Carlos Méndez" class="team-card__image">
+                    </div>
+                    <h3 class="team-card__name">Carlos Méndez</h3>
+                    <p class="team-card__role">Director Ejecutivo (CEO)</p>
+                    <p class="team-card__desc">Con 15 años de experiencia en capital e inversiones inmobiliarias, lidera
+                        la visión estratégica de Espacio Prime.</p>
+                    <div class="team-card__contact">
+                        <a href="https://linkedin.com" target="_blank" rel="noopener" title="Ver LinkedIn">
+                            <i class="fab fa-linkedin"></i> LinkedIn
+                        </a>
+                        <a href="mailto:carlos@espacioprime.com.py" title="Enviar correo">
+                            <i class="fas fa-envelope"></i> Email
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Team Member 2 -->
+                <div class="team-card" data-reveal="fade-up" data-delay="2">
+                    <div class="team-card__image-wrap">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80"
+                            alt="Laura Giménez" class="team-card__image">
+                    </div>
+                    <h3 class="team-card__name">Laura Giménez</h3>
+                    <p class="team-card__role">Directora Comercial</p>
+                    <p class="team-card__desc">Especialista en negociaciones corporativas y experta en el mapa comercial
+                        del macro-centro de Ciudad del Este.</p>
+                    <div class="team-card__contact">
+                        <a href="https://linkedin.com" target="_blank" rel="noopener" title="Ver LinkedIn">
+                            <i class="fab fa-linkedin"></i> LinkedIn
+                        </a>
+                        <a href="mailto:laura@espacioprime.com.py" title="Enviar correo">
+                            <i class="fas fa-envelope"></i> Email
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Team Member 3 -->
+                <div class="team-card" data-reveal="fade-up" data-delay="3">
+                    <div class="team-card__image-wrap">
+                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&q=80"
+                            alt="Mario Vargas" class="team-card__image">
+                    </div>
+                    <h3 class="team-card__name">Mario Vargas</h3>
+                    <p class="team-card__role">Asesor de Logística e Industria</p>
+                    <p class="team-card__desc">Focalizado exclusivamente en depósitos, parques industriales y grandes
+                        terrenos para corporaciones extranjeras.</p>
+                    <div class="team-card__contact">
+                        <a href="https://linkedin.com" target="_blank" rel="noopener" title="Ver LinkedIn">
+                            <i class="fab fa-linkedin"></i> LinkedIn
+                        </a>
+                        <a href="mailto:mario@espacioprime.com.py" title="Enviar correo">
+                            <i class="fas fa-envelope"></i> Email
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer__top">
+                <div class="footer__brand">
+                    <a href="index.html" class="navbar__logo" style="margin-bottom:var(--space-4);display:inline-flex;">
+                        <div class="navbar__logo-mark" data-brand-logo-mark
+                            style="background:var(--color-white); padding: 4px;">E</div>
+                        <div class="navbar__logo-text">
+                            <span class="navbar__logo-name" data-brand-name></span>
+                            <span class="navbar__logo-tagline" data-brand-tagline></span>
+                        </div>
+                    </a>
+                    <p class="footer__desc">Especialistas en inmuebles comerciales en Ciudad del Este y la región del
+                        Alto Paraná.</p>
+                </div>
+                <div>
+                    <p class="footer__heading">Navegación</p>
+                    <ul class="footer__links" data-nav-links-footer>
+                        <li><a href="nosotros.html" class="footer__link">Nosotros</a></li>
+                        <li><a href="catalogo.html" class="footer__link">Catálogo</a></li>
+                        <li><a href="index.html#proceso" class="footer__link">Proceso</a></li>
+                        <li><a href="index.html#contacto" class="footer__link">Contacto</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <p class="footer__heading">Contacto</p>
+                    <p class="footer__contact-item"><i class="fas fa-phone icon-primary"></i> <span
+                            data-footer-phone></span></p>
+                    <p class="footer__contact-item"><i class="fas fa-envelope icon-primary"></i> <span
+                            data-footer-email></span></p>
+                    <p class="footer__contact-item"><i class="fas fa-map-marker-alt icon-primary"></i> <a href="#"
+                            target="_blank" data-contact-map-link style="color:inherit;text-decoration:none;"><span
+                                data-footer-address></span></a></p>
+                </div>
+                <div>
+                    <p class="footer__heading">Aspectos Legales</p>
+                    <p class="footer__contact-item"><i class="fas fa-id-card icon-primary"></i> RUC: 80012345-6</p>
+                    <p class="footer__contact-item"><i class="fas fa-certificate icon-primary"></i> Reg. Inmobiliario N°
+                        452</p>
+                    <p class="footer__contact-item"><i class="fas fa-shield-alt icon-primary"></i> Transacciones Seguras
+                    </p>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p class="footer__copy" data-footer-copy>© 2025 Espacio Prime Inmobiliaria. Todos los derechos
+                    reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- FAB WhatsApp -->
+    <a href="#" class="fab-whatsapp" data-whatsapp-fab target="_blank" rel="noopener"
+        aria-label="Contactar por WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+    <script src="config/site-config.js"></script>
+    <script src="assets/js/config-injector.js"></script>
+    <script src="assets/js/navbar.js"></script>
+    <script src="assets/js/scroll-reveal.js"></script>
+    <script src="assets/js/counter.js"></script>
+    <script src="assets/js/nosotros.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            ConfigInjector.init();
+            Navbar.init();
+            Counter.init();
+            // ScrollReveal gets initialized in nosotros.js to ensure elements are loaded
+        });
+    </script>
+
+</body>
+
+</html>

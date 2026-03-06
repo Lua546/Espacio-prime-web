@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Catálogo de propiedades comerciales, casas y departamentos.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_PY">
+
+    <title>Servicios — Espacio Prime</title>
+
+    <!-- Styles -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap">
+    <link rel="stylesheet" href="assets/css/variables.css">
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="assets/css/sections.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        /* Estilos específicos para la página de servicios */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: var(--space-6);
+            margin-bottom: var(--space-12);
+        }
+
+        .no-results {
+            text-align: center;
+            padding: var(--space-12) 0;
+            grid-column: 1 / -1;
+        }
+
+        .no-results i {
+            font-size: 3rem;
+            color: var(--color-text-muted);
+            margin-bottom: var(--space-4);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <header class="navbar" role="banner">
+        <div class="container">
+            <nav class="navbar__inner" aria-label="Navegación principal">
+
+                <!-- Logo -->
+                <a href="index.html" class="navbar__logo" aria-label="Inicio">
+                    <div class="navbar__logo-mark" data-brand-logo-mark>E</div>
+                    <div class="navbar__logo-text">
+                        <span class="navbar__logo-name" data-brand-name>Espacio Prime</span>
+                        <span class="navbar__logo-tagline" data-brand-tagline>Inmobiliaria Comercial</span>
+                    </div>
+                </a>
+
+                <!-- Desktop links (populated by JS) -->
+                <div class="navbar__links" data-nav-links aria-label="Menú"></div>
+
+                <!-- Desktop CTA -->
+                <a href="index.html#contacto" class="btn btn-primary navbar__cta" data-nav-cta>
+                    Consultar
+                </a>
+
+                <!-- Hamburger -->
+                <button class="navbar__hamburger" aria-label="Abrir menú" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+            </nav>
+
+            <!-- Mobile menu (populated by JS) -->
+            <div class="navbar__mobile" data-nav-mobile role="menu"></div>
+        </div>
+    </header>
+
+    <section class="hero" id="inicio" aria-label="Hero" style="min-height: 55svh;">
+        <!-- Imagen de fondo diferente (ej. edificio corporativo) -->
+        <div class="hero__bg loaded"
+            style="background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1400&q=80');">
+        </div>
+        <div class="hero__overlay"></div>
+
+        <div class="container hero__inner" style="padding-bottom: 2rem; padding-top: 140px;">
+            <span class="hero__eyebrow">
+                <i class="fas fa-list icon-primary"></i> Nuestro Catálogo
+            </span>
+            <h1 class="hero__title">
+                Catálogo de Propiedades
+            </h1>
+            <p class="hero__subtitle">
+                Explora nuestras opciones de casas, departamentos y locales comerciales disponibles.
+            </p>
+            <div class="hero-search-wrapper"
+                style="opacity: 0; transform: translateY(30px); animation: heroFadeUp 0.8s var(--ease-out) 0.9s forwards;">
+
+                <!-- Search Box -->
+                <form class="hero-search" id="services-search-form" action="catalogo.html" method="GET">
+                    <div class="hero-search__group">
+                        <label for="search-city">Ciudad / Zona</label>
+                        <select id="search-city" name="city">
+                            <option value="">Todas las zonas</option>
+                            <option value="centro">Centro CDE</option>
+                            <option value="area1">Área 1</option>
+                            <option value="parana">Paraná Country</option>
+                        </select>
+                    </div>
+                    <div class="hero-search__divider"></div>
+                    <div class="hero-search__group">
+                        <label for="search-type">Tipo</label>
+                        <select id="search-type" name="type">
+                            <option value="">Cualquier tipo</option>
+                            <option value="casa">Casas</option>
+                            <option value="departamento">Departamentos</option>
+                            <option value="local">Locales</option>
+                        </select>
+                    </div>
+                    <div class="hero-search__divider"></div>
+                    <div class="hero-search__group">
+                        <label for="search-price">Precio</label>
+                        <select id="search-price" name="price">
+                            <option value="">Sin límite</option>
+                            <option value="1000">Hasta $1,000</option>
+                            <option value="2000">Hasta $2,000</option>
+                            <option value="5000">Hasta $5,000</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary hero-search__btn">
+                        <i class="fas fa-search"></i> Filtrar
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="servicios-results">
+        <div class="container">
+            <div class="services-grid" id="services-grid-container">
+                <!-- Cards injected by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer" role="contentinfo" style="margin-top: 4rem;">
+        <!-- contents mapped from config-injector -->
+        <div class="container">
+            <div class="footer__top">
+                <div class="footer__brand">
+                    <a href="index.html" class="navbar__logo" style="margin-bottom:var(--space-4);display:inline-flex;">
+                        <div class="navbar__logo-mark" data-brand-logo-mark
+                            style="background:var(--color-white); padding: 4px;">E</div>
+                        <div class="navbar__logo-text">
+                            <span class="navbar__logo-name" data-brand-name></span>
+                            <span class="navbar__logo-tagline" data-brand-tagline></span>
+                        </div>
+                    </a>
+                    <p class="footer__desc">Especialistas en inmuebles comerciales en Ciudad del Este y la región del
+                        Alto Paraná.</p>
+                </div>
+                <div>
+                    <p class="footer__heading">Navegación</p>
+                    <ul class="footer__links" data-nav-links-footer>
+                        <li><a href="index.html#nosotros" class="footer__link">Nosotros</a></li>
+                        <li><a href="catalogo.html" class="footer__link">Catálogo</a></li>
+                        <li><a href="index.html#proceso" class="footer__link">Proceso</a></li>
+                        <li><a href="index.html#contacto" class="footer__link">Contacto</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <p class="footer__heading">Contacto</p>
+                    <p class="footer__contact-item"><i class="fas fa-phone icon-primary"></i> <span
+                            data-footer-phone></span></p>
+                    <p class="footer__contact-item"><i class="fas fa-envelope icon-primary"></i> <span
+                            data-footer-email></span></p>
+                    <p class="footer__contact-item"><i class="fas fa-map-marker-alt icon-primary"></i> <a href="#"
+                            target="_blank" data-contact-map-link style="color:inherit;text-decoration:none;"><span
+                                data-footer-address></span></a></p>
+                </div>
+                <div>
+                    <p class="footer__heading">Aspectos Legales</p>
+                    <p class="footer__contact-item"><i class="fas fa-id-card icon-primary"></i> RUC: 80012345-6</p>
+                    <p class="footer__contact-item"><i class="fas fa-certificate icon-primary"></i> Reg. Inmobiliario N°
+                        452</p>
+                    <p class="footer__contact-item"><i class="fas fa-shield-alt icon-primary"></i> Transacciones Seguras
+                    </p>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p class="footer__copy" data-footer-copy>© 2025 Espacio Prime Inmobiliaria. Todos los derechos
+                    reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- FAB WhatsApp -->
+    <a href="https://wa.me/595900000000" class="fab-whatsapp" data-whatsapp-fab target="_blank" rel="noopener"
+        aria-label="Contactar por WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+    <script src="config/site-config.js"></script>
+    <script src="assets/js/config-injector.js"></script>
+    <script src="assets/js/navbar.js"></script>
+    <script src="assets/js/scroll-reveal.js"></script>
+    <script src="assets/js/servicios.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            ConfigInjector.init();
+            Navbar.init();
+            ScrollReveal.init();
+        });
+    </script>
+
+</body>
+
+</html>

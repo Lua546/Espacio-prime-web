@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <i class="fas fa-search-minus"></i>
           <h3>No se encontraron propiedades</h3>
           <p style="color:var(--color-text-muted);">Intenta ajustar o eliminar los filtros de búsqueda.</p>
-          <button type="button" class="btn btn-ghost" style="margin-top: 1rem;" onclick="window.location.href='servicios.html'">Ver todas las propiedades</button>
+          <button type="button" class="btn btn-ghost" style="margin-top: 1rem;" onclick="window.location.href='catalogo.html'">Ver todas las propiedades</button>
         </div>
       `;
       ScrollReveal.init();

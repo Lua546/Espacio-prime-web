@@ -34,9 +34,9 @@ const SITE_CONFIG = {
 
   // ─── NAVEGACIÓN ───────────────────────────────────────────
   nav: [
-    { label: "Nosotros", href: "#nosotros" },
-    { label: "Catálogo", href: "servicios.html" },
-    { label: "Proceso", href: "#proceso" },
+    { label: "Nosotros", href: "nosotros.html" },
+    { label: "Servicios", href: "servicios.html" },
+    { label: "Cat\u00e1logo", href: "catalogo.html" },
     { label: "Contacto", href: "#contacto" },
   ],
 

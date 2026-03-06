@@ -21,7 +21,7 @@
 Inmobiliaria/
 │
 ├── index.html                 ← Estructura HTML (Landing page principal)
-├── servicios.html             ← Página de Catálogo filtrable
+├── catalogo.html             ← Página de Catálogo filtrable
 │
 ├── config/
 │   └── site-config.js        ← ⭐ ÚNICO ARCHIVO A MODIFICAR POR CLIENTE
@@ -70,7 +70,7 @@ El archivo está completamente documentado con comentarios. Permite configurar:
 | `partners` | Nombres y logos de empresas aliadas |
 | `about` | Texto "Nosotros" e imagen |
 | `catalog` | Título, descripción y cards de propiedades destacadas |
-| `servicesCatalog` | El inventario completo para la ruta /servicios.html |
+| `servicesCatalog` | El inventario completo para la ruta /catalogo.html |
 | `process` | Pasos del proceso de trabajo |
 | `testimonials` | Testimonios de clientes |
 | `contactSection` | Textos y endpoint del formulario |
@@ -82,7 +82,7 @@ El archivo está completamente documentado con comentarios. Permite configurar:
 
 El proyecto está preparado para escalar. Para agregar nuevas páginas:
 
-1. Usar la estructura base de cabecera/footer vista en `index.html` o `servicios.html`.
+1. Usar la estructura base de cabecera/footer vista en `index.html` o `catalogo.html`.
 2. Incluir los mismos scripts globales (`lenis`, `config-injector`, `navbar`).
 3. Usar los mismos componentes CSS definidos en el UI Kit.
 4. Agregar el link en `site-config.js → nav`.
